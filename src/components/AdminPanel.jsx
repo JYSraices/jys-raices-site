@@ -177,7 +177,7 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
             <>
               <button
                 onClick={startNew}
-                style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.charcoal, color: C.white }}
+                style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.orange, color: C.charcoalDeep }}
                 className="w-full flex items-center justify-center gap-2 py-3 mb-6"
               >
                 <Plus size={17} /> Agregar propiedad
@@ -350,7 +350,7 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
                 <button
                   type="submit"
                   disabled={saving}
-                  style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.charcoal, color: C.white }}
+                  style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.orange, color: C.charcoalDeep }}
                   className="flex-1 py-3 flex items-center justify-center gap-2"
                 >
                   <Check size={16} /> {saving ? "Guardando..." : editingId ? "Guardar cambios" : "Publicar propiedad"}

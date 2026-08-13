@@ -1,9 +1,11 @@
-// Paleta y tipografía oficiales — tomadas del Manual de Marca J&S Raíces
+// Paleta y tipografía oficiales — Manual de Marca J&S Raíces
+// Dirección: MODERNA — naranja como protagonista, tipografía condensada en negrita
 export const C = {
   ink: "#1C1A16",
-  charcoal: "#1B1912",
-  charcoalDeep: "#141310",
-  line: "rgba(160,133,86,0.30)",
+  charcoal: "#151310",
+  charcoalDeep: "#0F0D0A",
+  charcoalCard: "#1E1B15",
+  line: "rgba(160,133,86,0.25)",
   gold: "#A08556",
   goldDark: "#7A6640",
   goldBright: "#C7A85E",
@@ -14,11 +16,10 @@ export const C = {
   card: "#F8F4E9",
   cream: "#EDE2C7",
   muted: "#6B6152",
+  mutedDark: "#8B8478",
   white: "#FFFFFF",
 };
 
-// Fuente principal (marca): Inter — Fuente de acento (wordmark/headers): Georgia (system)
-// Fuente de titulares grandes: Barlow Semi Condensed (sustituto libre de Flama, usada en el manual)
 export const FONT_DISPLAY = "Georgia, 'Times New Roman', serif";
 export const FONT_HEAD = "'Barlow Semi Condensed', sans-serif";
 export const FONT_BODY = "'Inter', sans-serif";
@@ -33,5 +34,12 @@ export const STATUS_COLOR = {
 
 export function formatCOP(n) {
   const num = Number(n) || 0;
+  return "$" + num.toLocaleString("es-CO");
+}
+
+export function formatCOPShort(n) {
+  const num = Number(n) || 0;
+  if (num >= 1000000000) return "$" + (num / 1000000000).toFixed(num % 1000000000 === 0 ? 0 : 1) + "MM";
+  if (num >= 1000000) return "$" + Math.round(num / 1000000) + "M";
   return "$" + num.toLocaleString("es-CO");
 }

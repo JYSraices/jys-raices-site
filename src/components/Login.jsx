@@ -50,7 +50,7 @@ export default function Login({ onClose }) {
           <button
             type="submit"
             disabled={loading}
-            style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.charcoal, color: C.white }}
+            style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.orange, color: C.charcoalDeep }}
             className="flex items-center justify-center gap-2 py-3 mt-1"
           >
             <LogIn size={16} /> {loading ? "Entrando..." : "Entrar"}
