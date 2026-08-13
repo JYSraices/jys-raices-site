@@ -37,7 +37,7 @@ export default function Login({ onClose }) {
       <div style={{ background: C.paper, width: "min(360px, 92vw)", padding: "28px 26px" }} onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-6">
           <div>
-            <div style={{ fontFamily: FONT_MONO, fontSize: 10, color: C.blueprint, letterSpacing: "0.08em" }}>ACCESO</div>
+            <div style={{ fontFamily: FONT_MONO, fontSize: 10, color: C.charcoal, letterSpacing: "0.08em" }}>ACCESO</div>
             <h2 style={{ fontFamily: FONT_DISPLAY, color: C.ink, fontSize: 21, fontWeight: 600 }}>Iniciar sesión</h2>
           </div>
           <button onClick={onClose} aria-label="Cerrar"><X size={20} color={C.ink} /></button>
@@ -46,11 +46,11 @@ export default function Login({ onClose }) {
         <form onSubmit={submit} className="flex flex-col gap-3">
           <input style={inputStyle} type="email" required placeholder="Tu correo" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input style={inputStyle} type="password" required placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
-          {error && <p style={{ fontFamily: FONT_BODY, fontSize: 12, color: C.brick }}>{error}</p>}
+          {error && <p style={{ fontFamily: FONT_BODY, fontSize: 12, color: C.rust }}>{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.blueprint, color: C.white }}
+            style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.charcoal, color: C.white }}
             className="flex items-center justify-center gap-2 py-3 mt-1"
           >
             <LogIn size={16} /> {loading ? "Entrando..." : "Entrar"}

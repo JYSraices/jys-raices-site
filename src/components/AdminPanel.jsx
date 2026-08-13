@@ -155,9 +155,9 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
         onClick={(e) => e.stopPropagation()}
         className="flex flex-col"
       >
-        <div style={{ background: C.blueprint, padding: "20px 22px" }} className="flex items-center justify-between">
+        <div style={{ background: C.charcoal, padding: "20px 22px" }} className="flex items-center justify-between">
           <div>
-            <div style={{ fontFamily: FONT_MONO, fontSize: 10, color: C.lineStrong, letterSpacing: "0.08em" }}>
+            <div style={{ fontFamily: FONT_MONO, fontSize: 10, color: C.goldBright, letterSpacing: "0.08em" }}>
               {userEmail}
             </div>
             <h2 style={{ fontFamily: FONT_DISPLAY, color: C.white, fontSize: 22, fontWeight: 600 }}>Gestionar propiedades</h2>
@@ -177,7 +177,7 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
             <>
               <button
                 onClick={startNew}
-                style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.blueprint, color: C.white }}
+                style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.charcoal, color: C.white }}
                 className="w-full flex items-center justify-center gap-2 py-3 mb-6"
               >
                 <Plus size={17} /> Agregar propiedad
@@ -201,7 +201,7 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
                       <button onClick={() => startEdit(p)} style={{ border: `1px solid ${C.line}`, color: C.ink }} className="p-2">
                         <PencilLine size={14} />
                       </button>
-                      <button onClick={() => handleDelete(p.id)} style={{ border: `1px solid ${C.brick}`, color: C.brick }} className="p-2">
+                      <button onClick={() => handleDelete(p.id)} style={{ border: `1px solid ${C.rust}`, color: C.rust }} className="p-2">
                         <Trash2 size={14} />
                       </button>
                     </div>
@@ -216,7 +216,7 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
             </>
           ) : (
             <form onSubmit={submit} className="flex flex-col gap-4">
-              <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: C.blueprint }}>
+              <div style={{ fontFamily: FONT_MONO, fontSize: 11, color: C.charcoal }}>
                 {editingId ? "EDITANDO PROPIEDAD" : "NUEVA PROPIEDAD"}
               </div>
 
@@ -323,7 +323,7 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
                         <button
                           type="button"
                           onClick={() => removePhoto(url)}
-                          style={{ position: "absolute", top: -6, right: -6, background: C.brick, color: C.white, borderRadius: "50%", width: 18, height: 18, fontSize: 11, lineHeight: "18px" }}
+                          style={{ position: "absolute", top: -6, right: -6, background: C.rust, color: C.white, borderRadius: "50%", width: 18, height: 18, fontSize: 11, lineHeight: "18px" }}
                         >
                           ×
                         </button>
@@ -333,7 +333,7 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
                 )}
               </div>
 
-              {errorMsg && <p style={{ fontFamily: FONT_BODY, fontSize: 12, color: C.brick }}>{errorMsg}</p>}
+              {errorMsg && <p style={{ fontFamily: FONT_BODY, fontSize: 12, color: C.rust }}>{errorMsg}</p>}
 
               <div className="flex gap-3 mt-2">
                 <button
@@ -350,7 +350,7 @@ export default function AdminPanel({ properties, onClose, onChanged, userEmail }
                 <button
                   type="submit"
                   disabled={saving}
-                  style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.blueprint, color: C.white }}
+                  style={{ fontFamily: FONT_BODY, fontWeight: 600, background: C.charcoal, color: C.white }}
                   className="flex-1 py-3 flex items-center justify-center gap-2"
                 >
                   <Check size={16} /> {saving ? "Guardando..." : editingId ? "Guardar cambios" : "Publicar propiedad"}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Home, Settings2, Search, Building2, Phone, Mail, MapPin } from "lucide-react";
-import { C, FONT_DISPLAY, FONT_BODY, FONT_MONO } from "./theme";
+import { Home, Settings2, Search, Phone, Mail, MapPin } from "lucide-react";
+import { C, FONT_DISPLAY, FONT_BODY, FONT_MONO, FONT_HEAD } from "./theme";
 import { supabase } from "./supabaseClient";
 import PropertyCard from "./components/PropertyCard";
 import Login from "./components/Login";
@@ -8,7 +8,7 @@ import AdminPanel from "./components/AdminPanel";
 
 // Datos reales de contacto (tomados de jysraices.com — edítalos aquí cuando cambien)
 const AGENCY = {
-  name: "JYS",
+  name: "J&S",
   suffix: "RAÍCES",
   phone: "+57 310 447 6964",
   phoneHref: "tel:+573104476964",
@@ -76,20 +76,22 @@ export default function App() {
   return (
     <div style={{ fontFamily: FONT_BODY, background: C.paper, minHeight: "100vh" }}>
       {/* NAV */}
-      <header style={{ background: C.blueprint, borderBottom: `1px solid ${C.line}` }}>
+      <header style={{ background: C.charcoal, borderBottom: `1px solid ${C.line}` }}>
         <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
-          <div className="flex items-center gap-2">
-            <Building2 size={20} color={C.brass} />
-            <span style={{ fontFamily: FONT_DISPLAY, color: C.white, fontSize: 20, fontWeight: 700, letterSpacing: "0.02em" }}>
-              {AGENCY.name}
-            </span>
-            <span style={{ fontFamily: FONT_MONO, color: C.lineStrong, fontSize: 10, letterSpacing: "0.1em" }}>
-              {AGENCY.suffix}
-            </span>
+          <div className="flex items-center gap-3">
+            <img src="/logo.jpg" alt="J&S Raíces" style={{ width: 42, height: 42, borderRadius: "50%" }} />
+            <div className="flex flex-col leading-none">
+              <span style={{ fontFamily: FONT_DISPLAY, color: C.white, fontSize: 19, fontWeight: 700, letterSpacing: "0.02em" }}>
+                {AGENCY.name} <span style={{ color: C.goldBright }}>{AGENCY.suffix}</span>
+              </span>
+              <span style={{ fontFamily: FONT_BODY, color: C.cream, opacity: 0.6, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 2 }}>
+                Inmobiliaria
+              </span>
+            </div>
           </div>
           <button
             onClick={openManage}
-            style={{ fontFamily: FONT_MONO, fontSize: 12, color: C.white, border: `1px solid ${C.lineStrong}` }}
+            style={{ fontFamily: FONT_MONO, fontSize: 12, color: C.white, border: `1px solid ${C.goldBright}` }}
             className="flex items-center gap-2 px-3 py-2"
           >
             <Settings2 size={14} /> Gestionar propiedades
@@ -100,28 +102,57 @@ export default function App() {
       {/* HERO */}
       <section
         style={{
-          background: C.blueprintDeep,
-          backgroundImage:
-            "linear-gradient(rgba(111,168,214,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(111,168,214,0.14) 1px, transparent 1px)",
-          backgroundSize: "34px 34px",
-          padding: "72px 20px 60px",
+          background: `radial-gradient(circle at 88% 8%, rgba(176,141,62,0.16), transparent 55%), ${C.charcoalDeep}`,
+          padding: "76px 20px 64px",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <div className="max-w-6xl mx-auto">
-          <div style={{ fontFamily: FONT_MONO, color: C.brass, fontSize: 12, letterSpacing: "0.14em" }} className="mb-4">
-            {AGENCY.areas}
+        {/* anillo dorado, eco del logo circular */}
+        <svg
+          viewBox="0 0 400 400"
+          style={{ position: "absolute", top: "-120px", right: "-100px", width: 420, height: 420, opacity: 0.5 }}
+        >
+          <circle cx="200" cy="200" r="196" fill="none" stroke={C.gold} strokeWidth="1.5" opacity="0.5" />
+          <circle cx="200" cy="200" r="170" fill="none" stroke={C.gold} strokeWidth="1" opacity="0.3" />
+        </svg>
+
+        <div className="max-w-6xl mx-auto" style={{ position: "relative" }}>
+          <div
+            style={{
+              display: "inline-block",
+              fontFamily: FONT_BODY,
+              color: C.cream,
+              fontSize: 12,
+              letterSpacing: "0.06em",
+              border: `1px solid ${C.line}`,
+              borderRadius: 999,
+              padding: "6px 16px",
+            }}
+            className="mb-6"
+          >
+            Confianza que construye futuro.
           </div>
           <h1
-            style={{ fontFamily: FONT_DISPLAY, color: C.white, fontSize: "clamp(34px, 6vw, 58px)", fontWeight: 700, lineHeight: 1.05, maxWidth: 720 }}
-            className="mb-5"
+            style={{ fontFamily: FONT_HEAD, color: C.white, fontSize: "clamp(38px, 7vw, 64px)", fontWeight: 700, lineHeight: 1.02, maxWidth: 680, textTransform: "uppercase" }}
+            className="mb-2"
           >
-            Cada propiedad, <em style={{ color: C.brass, fontStyle: "italic" }}>trazada</em> con precisión.
+            Elige cómo
           </h1>
-          <p style={{ fontFamily: FONT_BODY, color: "rgba(255,255,255,0.75)", fontSize: 17, maxWidth: 520 }} className="mb-8">
-            Más que negocios con propósito: confianza y acompañamiento desde el inicio hasta el cierre de cada operación inmobiliaria.
+          <div
+            style={{ display: "inline-block", background: C.gold, color: C.charcoal, fontFamily: FONT_BODY, fontSize: 22, fontWeight: 700, padding: "6px 20px", borderRadius: 999 }}
+            className="mb-6"
+          >
+            quieres vivir.
+          </div>
+          <p style={{ fontFamily: FONT_BODY, color: C.cream, opacity: 0.7, fontSize: 16, maxWidth: 520 }} className="mb-2">
+            Conectamos personas con espacios para vivir, crecer e invertir — en {AGENCY.areas.toLowerCase().replace(/ · /g, ", ")}.
+          </p>
+          <p style={{ fontFamily: FONT_BODY, color: C.gold, fontSize: 12, letterSpacing: "0.1em" }} className="mb-8">
+            {AGENCY.areas}
           </p>
 
-          <div style={{ background: C.card, border: `1px solid ${C.line}`, maxWidth: 560 }} className="flex items-center gap-2 px-4 py-3">
+          <div style={{ background: C.card, border: `1px solid ${C.line}`, borderRadius: 14, maxWidth: 560 }} className="flex items-center gap-2 px-4 py-3">
             <Search size={17} color={C.muted} />
             <input
               value={search}
@@ -150,8 +181,8 @@ export default function App() {
                 fontSize: 12,
                 letterSpacing: "0.05em",
                 padding: "8px 16px",
-                border: `1px solid ${filter === key ? C.blueprint : C.line}`,
-                background: filter === key ? C.blueprint : "transparent",
+                border: `1px solid ${filter === key ? C.charcoal : C.line}`,
+                background: filter === key ? C.charcoal : "transparent",
                 color: filter === key ? C.white : C.ink,
               }}
             >
@@ -169,8 +200,8 @@ export default function App() {
         {loading ? (
           <p style={{ fontFamily: FONT_MONO, color: C.muted, fontSize: 13 }}>Cargando propiedades...</p>
         ) : loadError ? (
-          <div style={{ border: `1px dashed ${C.brick}`, padding: 40 }} className="text-center">
-            <p style={{ fontFamily: FONT_BODY, color: C.brick, fontSize: 14 }}>
+          <div style={{ border: `1px dashed ${C.rust}`, padding: 40 }} className="text-center">
+            <p style={{ fontFamily: FONT_BODY, color: C.rust, fontSize: 14 }}>
               No se pudo conectar con la base de datos. Verifica las variables VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY.
             </p>
           </div>
@@ -193,11 +224,14 @@ export default function App() {
       </main>
 
       {/* FOOTER */}
-      <footer style={{ background: C.blueprint }} className="mt-10">
+      <footer style={{ background: C.charcoal }} className="mt-10">
         <div className="max-w-6xl mx-auto px-5 py-10 flex flex-wrap items-start justify-between gap-8">
-          <div>
-            <span style={{ fontFamily: FONT_DISPLAY, color: C.white, fontSize: 18, fontWeight: 700 }}>{AGENCY.name}</span>
-            <span style={{ fontFamily: FONT_MONO, color: C.lineStrong, fontSize: 10, marginLeft: 8 }}>{AGENCY.suffix}</span>
+          <div className="flex items-center gap-3">
+            <img src="/logo.jpg" alt="J&S Raíces" style={{ width: 36, height: 36, borderRadius: "50%" }} />
+            <div>
+              <span style={{ fontFamily: FONT_DISPLAY, color: C.white, fontSize: 17, fontWeight: 700 }}>{AGENCY.name}</span>
+              <span style={{ fontFamily: FONT_BODY, color: C.goldBright, fontSize: 11, marginLeft: 6, letterSpacing: "0.08em" }}>{AGENCY.suffix}</span>
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <a href={AGENCY.phoneHref} style={{ fontFamily: FONT_BODY, color: "rgba(255,255,255,0.8)", fontSize: 13 }} className="flex items-center gap-2">
